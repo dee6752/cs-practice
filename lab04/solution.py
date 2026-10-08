@@ -7,7 +7,7 @@ def winner(names,scores):
         if scores[i]>m:
             m=scores[i]
             n=i
-    return naimes[n]
+    return names[n]
 def average(scores):
     if scores!=0:
         return f'{(sum(scores)/len(scores))}'
@@ -18,7 +18,7 @@ def ranking(names,scores):
     sorted_indices = sorted(indices, key=lambda i: scores[i], reverse=True)
     result = []
     for i in sorted_indices:
-        result.append(naimes[i])
+        result.append(names[i])
     return result
 def above_average(names,scores):
     if not scores:
