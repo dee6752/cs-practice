@@ -8,7 +8,7 @@ def winner(names,scores):
             n=i
     return names[n]
 def average(scores):
-    if scores!=0:
+    if len(scores)!=0:
         return float(f'{(sum(scores)/len(scores)):.2f}')
     elif len(scores)==1:
         return scores[0]
