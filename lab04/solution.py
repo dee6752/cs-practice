@@ -1,0 +1,35 @@
+names =  ["Аня", "Боря", "Вика"]
+scores = [7.0,   9.0,    9.0]
+def winner(names,scores):
+    n=0
+    m=0
+    for i in range(len(scores)):
+        if scores[i]>m:
+            m=scores[i]
+            n=i
+    return naimes[n]
+def average(scores):
+    if scores!=0:
+        return f'{(sum(scores)/len(scores))}'
+    else:
+        return 0.0
+def ranking(names,scores):
+    indices = list(range(len(names)))
+    sorted_indices = sorted(indices, key=lambda i: scores[i], reverse=True)
+    result = []
+    for i in sorted_indices:
+        result.append(naimes[i])
+    return result
+def above_average(names,scores):
+    if not scores:
+        return []
+    average = sum(scores) / len(scores)
+    result = []
+    for i in range(len(names)):
+        if scores[i] > average:
+            result.append(names[i])
+    return result
+print(winner(names,scores))
+print(average(scores))
+print(ranking(names,scores))
+print(adove_average(names,scores))
