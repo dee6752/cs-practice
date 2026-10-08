@@ -9,7 +9,7 @@ def winner(names,scores):
     return names[n]
 def average(scores):
     if scores!=0:
-        return float(f'{(sum(scores)/len(scores))}')
+        return float(f'{(sum(scores)/len(scores)):.2f}')
     else:
         return 0.0
 def ranking(names,scores):
