@@ -14,7 +14,7 @@ def average(scores):
         return scores[0]
     else:
         return 0.0
-def ranking(names,scores):
+def ranking(names, scores):
     indices = list(range(len(names)))
     sorted_indices = sorted(indices, key=lambda i: scores[i])
     sorted_indices = sorted_indices[::-1]
