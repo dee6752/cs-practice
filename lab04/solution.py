@@ -16,6 +16,7 @@ def average(scores):
         return 0.0
 def ranking(names,scores):
     indices = list(range(len(names)))
+    sorted_indices = indicase
     sorted_indices = sorted_indices[::-1]
     result = []
     for i in sorted_indices:
