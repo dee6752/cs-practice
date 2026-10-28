@@ -1,11 +1,10 @@
-from tablestats import read_rows, count_types, total_minutes, to_csv
+from tablestats import *
 
 
 def main():
-    path = input().strip()
-    with open(path, encoding="utf-8") as table:
+    with open(input(), encoding="utf-8") as table:
         rows = read_rows(table)
-
+        
     counts = count_types(rows)
     print(len(rows))
     print(len(counts))
