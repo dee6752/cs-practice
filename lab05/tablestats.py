@@ -1,42 +1,48 @@
 def read_rows(lines: list[str]) -> list[dict]:
     rows = []
-    header = None
+    header = []
+
     for line in lines:
-        if not line.strip():
+        line = line.strip()
+        if not line:
             continue
-        if header is None:
-            header = [h.strip() for h in line.strip().split(',')]
+
+        f = [value.strip() for value in line.split(",")]
+
+        if not header:
+            header = f
             continue
-        parts = [p.strip() for p in line.strip().split(',')]
-        if len(parts) != len(header):
+        if len(f) != len(header):
             continue
-        rows.append(dict(zip(header, parts)))
+
+        rows.append(dict(zip(header, f)))
+
     return rows
 
 
 def count_types(rows: list[dict]) -> dict:
     counts = {}
     for row in rows:
-        kind = row.get('тип')
-        if kind is not None:
-            counts[kind] = counts.get(kind, 0) + 1
+        kind = row["тип"]
+        counts[kind] = counts.get(kind, 0) + 1
     return counts
 
 
 def total_minutes(rows: list[dict], kind: str) -> float:
-    total = 0.0
+    t = 0.0
     for row in rows:
-        if row.get('тип') == kind:
-            minutes_str = row.get('минуты', '0').replace(',', '.')
-            try:
-                total += float(minutes_str)
-            except ValueError:
-                continue
-    return round(total, 1)
+        if row.get('тип', None) != kind:
+            continue
+        try:
+            minutes =  float(row['минуты'].replace(",", "."))
+        except ValueError:
+            continue
+        t += minutes
+    return round(t, 1)
 
 
 def to_csv(counts: dict) -> str:
     lines = ["тип,количество"]
-    for kind in sorted(counts.keys()):
+    for kind in sorted(counts):
         lines.append(f"{kind},{counts[kind]}")
     return "\n".join(lines) + "\n"
